@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Bot Telegram untuk menganalisis gambar grafik trading dengan UltraScalp GPT
+Bot Telegram untuk menganalisis gambar grafik trading dengan CryptoScreener AI
 """
 
 import os
 import logging
-from src.config import TEMP_DIR
+from src.config import TEMP_DIR, BOT_NAME
 from src.telegram_bot import TelegramBot
 
 # Pastikan direktori sementara ada
@@ -19,7 +19,7 @@ def main():
     Fungsi utama untuk menjalankan bot
     """
     try:
-        logger.info("Memulai bot UltraScalp...")
+        logger.info(f"Memulai bot {BOT_NAME}...")
         bot = TelegramBot()
         
         # Jalankan bot

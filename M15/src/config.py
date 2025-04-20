@@ -43,4 +43,22 @@ logger.info(f"Mode fallback: {'Aktif' if USE_FALLBACK else 'Nonaktif'}")
 TEMP_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'temp')
 os.makedirs(TEMP_DIR, exist_ok=True)
 
+# File untuk menyimpan data user
+USERS_FILE = os.getenv('USERS_FILE', 'config/users.json')
+
+# Admin ID default (gunakan koma sebagai pemisah jika ada lebih dari satu)
+DEFAULT_ADMIN_IDS = os.getenv('DEFAULT_ADMIN_IDS', '')
+try:
+    DEFAULT_ADMIN_IDS = [int(admin_id.strip()) for admin_id in DEFAULT_ADMIN_IDS.split(',') if admin_id.strip()]
+    if DEFAULT_ADMIN_IDS:
+        logger.info(f"Default admin IDs: {DEFAULT_ADMIN_IDS}")
+    else:
+        logger.warning("No default admin IDs configured. Add DEFAULT_ADMIN_IDS in .env file.")
+except Exception as e:
+    logger.error(f"Error parsing DEFAULT_ADMIN_IDS: {str(e)}")
+    DEFAULT_ADMIN_IDS = []
+
+# Nama bot
+BOT_NAME = os.getenv('BOT_NAME', 'CryptoScreener AI')
+
 logger.info("Konfigurasi dimuat dengan sukses") 
