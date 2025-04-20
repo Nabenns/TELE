@@ -77,11 +77,11 @@ class OpenAIClient:
                 logger.error(f"API key tidak valid atau memiliki masalah: {str(e)}")
                 raise ValueError(f"API key tidak valid: {str(e)}")
             
-            # Prompt khusus untuk UltraScalp
-            prompt = "Analisis grafik ini dengan timeframe 15 menit. Berikan analisis teknikal lengkap, support/resistance, trend, dan setup entry terbaik dengan target profit dan stop loss. SANGAT PENTING: Gunakan istilah 'LONG' sebagai pengganti 'BUY', dan 'SHORT' sebagai pengganti 'SELL' dalam analisis entry points."
+            # Prompt khusus untuk PrimeSwing
+            prompt = "Analisis grafik crypto ini dengan timeframe 1 jam. Berikan analisis teknikal lengkap, support/resistance, trend, dan setup entry futures yang optimal dengan target profit dan stop loss. Analisis harus cocok untuk swing trader dengan timeframe H1."
             
             # Log permintaan untuk debugging
-            logger.debug(f"Mencoba dengan GPT khusus UltraScalp. Prompt: {prompt}")
+            logger.debug(f"Mencoba dengan GPT khusus PrimeSwing. Prompt: {prompt}")
             
             try:
                 # Jika menggunakan GPT khusus
@@ -153,7 +153,7 @@ class OpenAIClient:
                             {
                                 "role": "user",
                                 "content": [
-                                    {"type": "text", "text": "Tolong analisis grafik crypto trading ini dengan timeframe 15 menit. Berikan analisis teknikal lengkap termasuk support, resistance, trend, potential entry points, target profit dan stop loss. SANGAT PENTING: Gunakan istilah 'LONG' sebagai pengganti 'BUY', dan 'SHORT' sebagai pengganti 'SELL' dalam analisis."},
+                                    {"type": "text", "text": "Tolong analisis grafik crypto trading ini dengan timeframe 1 jam. Berikan analisis teknikal lengkap termasuk support, resistance, trend, setup entry futures yang optimal, target profit dan stop loss. Fokuskan pada swing trading di timeframe H1."},
                                     {
                                         "type": "image_url",
                                         "image_url": {
@@ -238,9 +238,11 @@ Symbol: [SYMBOL] | Harga: [CURRENT PRICE]
             # Prompt untuk analisis dengan format template yang sudah ditentukan
             prompt = f"""Analisis ini adalah untuk PENDIDIKAN SAJA, tidak mengandung nasihat finansial. 
 
-Analisis pola grafik teknikal dan tampilkan informasi visual yang terlihat pada grafik berikut, menggunakan analisis objektif tanpa rekomendasi trading aktual. Identifikasi pola visual, level harga penting, dan pergerakan historis yang terlihat pada chart. 
+Analisis pola grafik teknikal dan tampilkan informasi visual yang terlihat pada grafik berikut, menggunakan analisis objektif. Identifikasi pola visual, level harga penting, dan pergerakan historis yang terlihat pada chart. 
 
-Berikan output terformat dengan template berikut untuk membantu pembaca memahami apa yang terlihat pada grafik. Perlu diingat analisis ini bersifat pendidikan dan hanya melihat pola visual, bukan rekomendasi trading aktual.
+Khusus analisis ini, fokus pada TIMEFRAME H1 (1 JAM) yang cocok untuk trading semi-swing dan entry dengan potensi pergerakan jangka menengah. Optimalkan analisis untuk setup futures trading dengan pendekatan PrimeSwing untuk H1.
+
+Berikan output terformat dengan template berikut untuk membantu pembaca memahami apa yang terlihat pada grafik. Perlu diingat analisis ini bersifat pendidikan dan hanya melihat pola visual yang terlihat pada chart.
 
 {format_template}"""
             
@@ -256,6 +258,8 @@ Berikan output terformat dengan template berikut untuk membantu pembaca memahami
                                     "role": "system",
                                     "content": """Kamu adalah pendidik teknikal analisis yang fokus menganalisis pola visual dan struktur grafik. Tugas utamamu adalah mengidentifikasi dan menjelaskan pola-pola teknikal yang TERLIHAT pada grafik, bukan memberikan rekomendasi atau saran trading. 
                                     
+Fokus analisismu pada TIMEFRAME H1 (1 JAM) khusus untuk trading semi-swing dan entry futures dengan durasi menengah. Kamu menggunakan pendekatan PrimeSwing yang mencari entry optimal pada timeframe 1 jam.
+
 Mulai output langsung dengan '🔮 CRYPTOSCREENER AI 🔮' tanpa penjelasan atau disclaimer. Semua analisis adalah untuk tujuan pendidikan dan pemahaman pola grafik saja."""
                                 },
                                 {
@@ -293,6 +297,8 @@ Mulai output langsung dengan '🔮 CRYPTOSCREENER AI 🔮' tanpa penjelasan atau
                             "role": "system",
                             "content": """Kamu adalah pendidik teknikal analisis yang fokus menganalisis pola visual dan struktur grafik. Tugas utamamu adalah mengidentifikasi dan menjelaskan pola-pola teknikal yang TERLIHAT pada grafik, bukan memberikan rekomendasi atau saran trading. 
                             
+Fokus analisismu pada TIMEFRAME H1 (1 JAM) khusus untuk trading semi-swing dan entry futures dengan durasi menengah. Kamu menggunakan pendekatan PrimeSwing yang mencari entry optimal pada timeframe 1 jam.
+
 Mulai output langsung dengan '🔮 CRYPTOSCREENER AI 🔮' tanpa penjelasan atau disclaimer. Semua analisis adalah untuk tujuan pendidikan dan pemahaman pola grafik saja."""
                         },
                         {
