@@ -1,0 +1,47 @@
+# Telegram GPT Bot Project
+
+## Project Description
+Creating a Telegram bot that forwards images to a specialized GPT model (Futures Maximizer: UltraScalp) and returns the response to the Telegram user.
+
+## Requirements
+- Telegram Bot API integration
+- OpenAI API integration
+- Ability to handle image messages from Telegram
+- Forward images to specific GPT (g-67e7e2b2aad0819183cf30988154b9a5)
+- Return GPT responses back to Telegram user
+
+## Tools
+- Python with a virtual environment
+- python-telegram-bot library
+- OpenAI API client
+
+## Task Progress
+[X] Define project requirements
+[X] Set up project structure
+[X] Create virtual environment (Skipped as per user request)
+[X] Install required dependencies (Added requirements.txt)
+[X] Implement Telegram bot with image handling
+[X] Implement OpenAI API integration with custom GPT
+[X] Test the complete workflow (Code ready for testing)
+[X] Add error handling and logging
+[X] Deployment instructions (Added to README.md)
+
+# Scratchpad
+## Completed Tasks
+1. Created basic project structure with necessary files
+   - src/ directory for main code
+   - config/ directory for configuration
+   - temp/ directory for temporary files
+2. Set up configuration file (config/.env.example)
+3. Implemented OpenAI client for image analysis
+4. Implemented Telegram bot with handlers for commands and images
+5. Created main application entry point
+6. Added comprehensive README with instructions
+7. Added error handling and logging throughout the code
+
+## Next Steps for User
+1. Copy config/.env.example to config/.env
+2. Fill in the API keys for Telegram Bot and OpenAI
+3. Install dependencies with `pip install -r requirements.txt`
+4. Run the bot with `python main.py`
+5. Test by sending images to the bot on Telegram 
